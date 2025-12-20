@@ -57,22 +57,12 @@
 					</span>
 					<div>
 						<div class="name">Facebook</div>
-				<script>
-				// Cache-bust the avatar image on each page load (development-friendly)
-				(function(){
-					const img = document.querySelector('.avatar');
-					if(!img) return;
-					const base = img.getAttribute('src').split('?')[0];
-					img.src = base + '?v=' + Date.now();
-				})();
-				</script>
-			</body>
 					</div>
 				</a>
 
 				<a class="btn" href="https://www.instagram.com/geemethpenuja/" target="_blank" rel="noopener">
 					<span class="icon" aria-hidden="true"> 
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="#E4405F" stroke-width="1.2" fill="url(#g)"/></svg>
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="#E4405F" stroke-width="1.2" fill="#E4405F"/></svg>
 					</span>
 					<div>
 						<div class="name">Instagram</div>
@@ -85,7 +75,16 @@
 
 			
 		</main>
-	</body>
+		<script>
+		// Cache-bust the avatar image on each page load (development-friendly)
+		(function(){
+			const img = document.querySelector('.avatar');
+			if(!img) return;
+			const base = img.getAttribute('src').split('?')[0];
+			img.src = base + '?v=' + Date.now();
+		})();
+		</script>
+		</body>
 </html>
 
 
