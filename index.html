@@ -16,8 +16,13 @@
 			html,body{height:100%}
 			body{
 				margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.25;
-				background:radial-gradient(1200px 600px at 10% 10%, rgba(255,107,107,0.06), transparent),
-									 linear-gradient(180deg,var(--bg1),var(--bg2));
+				/* Page background: user-provided image (bg.jpg) layered under gradients */
+				background: url('bg.jpg') center/cover no-repeat,
+							radial-gradient(1200px 600px at 10% 10%, rgba(255,107,107,0.06), transparent),
+							linear-gradient(180deg,var(--bg1),var(--bg2));
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
 				color:#e6eef8;display:flex;align-items:center;justify-content:center;padding:40px;
 			}
 			.card{
