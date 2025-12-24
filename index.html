@@ -117,18 +117,25 @@
 			
 		</main>
 		<script>
-		// Loader hide logic + cache-bust the avatar image
+		// Enforce 2s minimum loader display + cache-bust avatar
 		(function(){
+			const MIN_SHOW = 2000; // ms
+			const start = Date.now();
 			function hideLoader(){
 				const loader = document.getElementById('loader');
 				if(!loader) return;
 				loader.classList.add('hidden');
-				setTimeout(()=>{if(loader && loader.parentNode) loader.parentNode.removeChild(loader);},600);
+				setTimeout(()=>{ if(loader && loader.parentNode) loader.parentNode.removeChild(loader); },600);
 			}
 
-			// Hide loader when page fully loads (or after 2.2s fallback)
-			window.addEventListener('load', ()=>{setTimeout(hideLoader,200);});
-			setTimeout(hideLoader,2200);
+			window.addEventListener('load', ()=>{
+				const elapsed = Date.now() - start;
+				const remaining = Math.max(0, MIN_SHOW - elapsed);
+				setTimeout(hideLoader, remaining);
+			});
+
+			// Safety fallback: ensure loader can't hang indefinitely
+			setTimeout(hideLoader, MIN_SHOW + 4000);
 
 			// Cache-bust the avatar image on each page load (development-friendly)
 			const img = document.querySelector('.avatar');
